@@ -1,0 +1,10 @@
+# Garante LF nos arquivos de texto (deploy em Linux/cPanel)
+* text=auto eol=lf
+
+# Binários (não normalizar)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.pdf binary

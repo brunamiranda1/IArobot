@@ -1,0 +1,30 @@
+# ============================================================
+# Deploy repo (IArobot) — versiona SOMENTE os arquivos públicos
+# ============================================================
+
+# 1) Ignora tudo na raiz por padrão
+/*
+
+# 2) Libera apenas o que deve ir para produção
+!/index.html
+!/*.css
+!/*.js
+!/assets/
+!/.htaccess
+!/.cpanel.yml
+!/.gitignore
+!/.gitattributes
+
+# 3) Nunca versionar (reforço de segurança)
+node_modules/
+.git/
+.claude/
+src/
+components/
+lib/
+dist/
+build/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
