@@ -28,3 +28,4 @@ build/
 *.tmp
 .DS_Store
 Thumbs.db
+/assets/kiwify-banner-300x250.png
