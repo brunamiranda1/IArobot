@@ -1,7 +1,12 @@
 ---
+# ============================================================
+# DESTINO EXCLUSIVO DO XOANSIEDADE.
+# NUNCA usar $HOME/public_html/ — esse diretório é do iarevolution
+# (domínio principal) e JAMAIS deve ser tocado por este deploy.
+# ============================================================
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
+    - export DEPLOYPATH=$HOME/xoansiedade.com/
     - /bin/mkdir -p "$DEPLOYPATH"
     - /bin/cp -f index.html "$DEPLOYPATH"
     - /bin/cp -Rf assets "$DEPLOYPATH"
