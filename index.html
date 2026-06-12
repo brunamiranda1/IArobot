@@ -384,7 +384,7 @@ em.it{ font-style:italic; }
     <div class="head reveal">
       <svg class="sprig" viewBox="0 0 80 26" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 25V9"/><path d="M40 15c-8-1-13-5-16-10 7 1 13 4 16 9"/><path d="M40 15c8-1 13-5 16-10-7 1-13 4-16 9"/><path d="M40 10c-5-1-9-4-11-8 5 1 9 3 11 7"/><path d="M40 10c5-1 9-4 11-8-5 1-9 3-11 7"/><circle cx="40" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
       <p class="eyebrow center">Tudo o que você recebe</p>
-      <h2>Três recursos feitos pra funcionar juntos.</h2>
+      <h2>Três recursos feitos pra funcionar <em>juntos</em>.</h2>
       <p class="lead">Não é conteúdo pra você salvar e esquecer. Cada peça tem um papel no processo, e elas funcionam juntas, não separadas.</p>
     </div>
     <div class="recebe-grid">
@@ -560,7 +560,7 @@ em.it{ font-style:italic; }
     <div class="head reveal">
       <svg class="sprig" viewBox="0 0 80 26" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 25V9"/><path d="M40 15c-8-1-13-5-16-10 7 1 13 4 16 9"/><path d="M40 15c8-1 13-5 16-10-7 1-13 4-16 9"/><path d="M40 10c-5-1-9-4-11-8 5 1 9 3 11 7"/><path d="M40 10c5-1 9-4 11-8-5 1-9 3-11 7"/><circle cx="40" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
       <span class="kick">★ Bônus inclusos na semana de lançamento</span>
-      <h2>Quatro bônus pra você não ficar sozinho nos dias difíceis.</h2>
+      <h2>Quatro bônus pra você não ficar <em>sozinho</em> nos dias difíceis.</h2>
       <p class="lead">Entre uma sessão e outra, a vida acontece. Esses bônus existem pra esse meio-tempo.</p>
     </div>
     <div class="bonus-grid">
@@ -826,7 +826,7 @@ em.it{ font-style:italic; }
     <div class="head reveal">
       <svg class="sprig" viewBox="0 0 80 26" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 25V9"/><path d="M40 15c-8-1-13-5-16-10 7 1 13 4 16 9"/><path d="M40 15c8-1 13-5 16-10-7 1-13 4-16 9"/><path d="M40 10c-5-1-9-4-11-8 5 1 9 3 11 7"/><path d="M40 10c5-1 9-4 11-8-5 1-9 3-11 7"/><circle cx="40" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
       <p class="eyebrow center">Oferta de lançamento</p>
-      <h2>Comece hoje, por um valor que não volta.</h2>
+      <h2>Comece hoje, por um valor que <em>não volta</em>.</h2>
     </div>
     <div class="pcard reveal">
       <div class="pc-in">
@@ -1049,6 +1049,55 @@ em.it{ font-style:italic; }
   .hb-name{ font-size:15px; }
   .btn{ padding:16px 26px; font-size:15px; }
   .tcard{ padding:34px 24px; }
+}
+</style>
+
+<!-- ============================ REFINAMENTO PREMIUM ============================ -->
+<style>
+/* 1 · Grain sutil em toda a página (textura de papel premium) */
+body::after{
+  content:""; position:fixed; inset:0; z-index:2147483647; pointer-events:none; opacity:.032;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px 240px;
+}
+
+/* 2 · Micro-interações: elevação suave em todos os cards */
+.mstep{ transition:transform .3s ease, border-color .3s, box-shadow .3s; }
+.mstep:hover{ transform:translateY(-4px); border-color:rgba(184,154,92,.5); }
+.tcard{ transition:transform .3s ease, box-shadow .3s; }
+.tcard:hover{ transform:translateY(-4px); }
+.t-ia:hover{ box-shadow:0 34px 64px -42px rgba(42,27,15,.5); }
+.dcard{ transition:transform .3s ease, box-shadow .3s; }
+.dcard:hover{ transform:translateY(-4px); }
+.dcard.real:hover{ box-shadow:0 34px 64px -40px rgba(42,27,15,.55); }
+.gbox{ transition:transform .3s ease, box-shadow .3s; }
+.gbox:hover{ transform:translateY(-4px); box-shadow:0 34px 66px -42px rgba(42,27,15,.5); }
+.bonus-extra{ transition:transform .3s ease, box-shadow .3s; }
+.bonus-extra:hover{ transform:translateY(-4px); box-shadow:0 34px 66px -42px rgba(42,27,15,.45); }
+
+/* 3 · Cerimônia no preço: halo dourado respirando + riscado animado */
+.pc-price{ position:relative; overflow:hidden; }
+.pc-price > *{ position:relative; z-index:1; }
+.pc-price::before{ content:""; position:absolute; inset:-40% -20%; pointer-events:none; background:radial-gradient(50% 46% at 50% 44%, rgba(184,154,92,.20), transparent 70%); animation:priceGlow 4.5s ease-in-out infinite; }
+@keyframes priceGlow{ 0%,100%{ opacity:.5; } 50%{ opacity:1; } }
+.pc-price .from s{ text-decoration:none; position:relative; white-space:nowrap; }
+.pc-price .from s::after{ content:""; position:absolute; left:-2%; top:53%; height:1.5px; width:0; background:#A99AA4; }
+.pcard.reveal.in .pc-price .from s::after{ animation:strike .7s ease .9s forwards; }
+@keyframes strike{ to{ width:104%; } }
+
+/* 4 · Divisores: costura dourada na entrada das seções escuras */
+.metodo, .autora, .final{ box-shadow:inset 0 1px 0 rgba(184,154,92,.30); }
+
+/* 5 · Itálico dourado nos títulos-chave */
+.head h2 em{ font-style:italic; color:var(--gold-deep); font-weight:inherit; }
+
+/* 6 · Rodapé com assinatura dourada e mais respiro */
+.foot{ border-top:1px solid rgba(184,154,92,.32); padding:88px 0 48px; }
+
+@media (prefers-reduced-motion:reduce){
+  .pc-price::before{ animation:none; opacity:.7; }
+  .pc-price .from s{ text-decoration:line-through; }
+  .pc-price .from s::after{ display:none; }
 }
 </style>
 
