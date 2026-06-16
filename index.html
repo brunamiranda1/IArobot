@@ -351,8 +351,21 @@ em.it{ font-style:italic; }
 .recebe .head{ max-width:720px; margin:0 auto 56px; text-align:center; }
 .recebe .head h2{ margin:16px 0 16px; }
 .recebe-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.rcard{ background:var(--paper); border:1px solid var(--cream-line); border-radius:24px; padding:8px; display:flex; flex-direction:column; transition:transform .35s, box-shadow .35s; overflow:hidden; }
-.rcard:hover{ transform:translateY(-6px); box-shadow:0 36px 64px -38px rgba(42,27,15,.45); }
+.rcard{ background:transparent; border:0; padding:0; perspective:1600px; cursor:pointer; transition:transform .35s; }
+.rcard:hover{ transform:translateY(-6px); }
+.rcard-inner{ position:relative; width:100%; height:530px; transition:transform .65s cubic-bezier(.2,.8,.2,1); transform-style:preserve-3d; }
+@media(max-width:560px){ .rcard-inner{ height:560px; } }
+.rcard.flipped .rcard-inner{ transform:rotateY(180deg); }
+.rcard-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; background:var(--paper); border:1px solid var(--cream-line); border-radius:24px; padding:8px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 26px 54px -40px rgba(42,27,15,.45); }
+.rcard-back{ transform:rotateY(180deg); padding:38px 32px; justify-content:center; }
+.rcard-back .bk-tag{ font-family:var(--serif); font-style:italic; font-size:15px; color:var(--terra-deep); margin-bottom:10px; }
+.rcard-back h4{ font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink); margin:0 0 14px; line-height:1.2; }
+.rcard-back p{ font-size:15px; color:var(--ink-soft); line-height:1.64; margin:0; }
+.rcard-hint{ margin-top:14px; font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--terra); display:inline-flex; align-items:center; gap:7px; }
+.rcard-hint svg{ width:14px; height:14px; }
+.rcard-voltar{ margin-top:24px; font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--terra); display:inline-flex; align-items:center; gap:7px; }
+.rcard-voltar svg{ width:14px; height:14px; }
+@media (prefers-reduced-motion:reduce){ .rcard-inner{ transition:none; } }
 .rcard .cap{ border-radius:18px; padding:30px 26px 26px; color:#fff; position:relative; overflow:hidden; }
 .rcard.r1 .cap{ background:linear-gradient(155deg,#8A465F,#6E3349); }
 .rcard.r2 .cap{ background:linear-gradient(155deg,#4C3149,#37223A); }
@@ -411,62 +424,107 @@ em.it{ font-style:italic; }
       <p class="lead">Não é conteúdo pra você salvar e esquecer. Cada peça tem um papel no processo, e elas funcionam juntas, não separadas.</p>
     </div>
     <div class="recebe-grid">
-      <div class="rcard r1 reveal">
-        <div class="cap">
-          <div class="nn">Recurso 01</div>
-          <div class="emb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20"/><path d="M9 8h7M9 11h5"/></svg></div>
-          <h3>eBook · Jornada de 21 dias</h3>
-        </div>
-        <div class="bd">
-          <p>O eBook completo da jornada, com exercícios práticos, ferramentas para transformar a forma como você lida com a ansiedade e aplicações para cada dia.</p>
-          <ul class="feat">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> eBook completo e acolhedor</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Exercícios e aplicações diárias</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Feito para acompanhar pelo celular</li>
-          </ul>
-        </div>
-      </div>
-      <div class="rcard r2 reveal">
-        <div class="cap">
-          <div class="nn">Recurso 02</div>
-          <div class="emb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M3 13v-2a9 9 0 0 1 18 0v2"/><path d="M21 15a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2v1Z"/><path d="M3 15a2 2 0 0 0 2 2h1v-5H5a2 2 0 0 0-2 2v1Z"/><path d="M18 17v1a3 3 0 0 1-3 3h-3"/></svg></div>
-          <h3>21 áudios exclusivos</h3>
-        </div>
-        <div class="bd">
-          <p>Um áudio para cada dia da jornada, com exercícios guiados, reflexões e aplicações práticas para acalmar e conduzir o seu dia.</p>
-          <ul class="feat">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Um áudio para cada dia</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Exercícios guiados e reflexões</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Acesso sempre que precisar retornar</li>
-          </ul>
+      <div class="rcard r1 reveal" tabindex="0" role="button" aria-label="Toque para saber mais sobre o eBook">
+        <div class="rcard-inner">
+          <div class="rcard-face rcard-front">
+            <div class="cap">
+              <div class="nn">Recurso 01</div>
+              <div class="emb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20"/><path d="M9 8h7M9 11h5"/></svg></div>
+              <h3>eBook · Jornada de 21 dias</h3>
+            </div>
+            <div class="bd">
+              <p>O eBook completo da jornada, com exercícios práticos, ferramentas para transformar a forma como você lida com a ansiedade e aplicações para cada dia.</p>
+              <ul class="feat">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> eBook completo e acolhedor</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Exercícios e aplicações diárias</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Feito para acompanhar pelo celular</li>
+              </ul>
+              <span class="rcard-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M5 9a7 7 0 0 1 12-3l3 3M19 15a7 7 0 0 1-12 3l-3-3"/></svg> Toque para saber mais</span>
+            </div>
+          </div>
+          <div class="rcard-face rcard-back">
+            <div class="bk-tag">O eBook da jornada</div>
+            <h4>Seu caminho diário, em 21 dias</h4>
+            <p>Cada dia traz um tema, conduz uma prática e te ajuda a entender o que acontece nos seus pensamentos, nas suas emoções e nas suas escolhas. Linguagem leve, pra ler no celular e aplicar no seu dia, no seu ritmo.</p>
+            <span class="rcard-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Voltar</span>
+          </div>
         </div>
       </div>
-      <div class="rcard r3 reveal">
-        <div class="cap">
-          <div class="nn">Recurso 03</div>
-          <div class="emb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 3c4.5 0 8 3 8 6.7 0 3.7-3.5 6.6-8 6.6-.9 0-1.8-.1-2.6-.3L5 18l1-3.2C4.2 13.6 4 11.8 4 9.7 4 6 7.5 3 12 3Z"/><path d="M9 9h6M9 12h4"/></svg></div>
-          <h3>Claire · sua companheira de jornada</h3>
+      <div class="rcard r2 reveal" tabindex="0" role="button" aria-label="Toque para saber mais sobre os áudios">
+        <div class="rcard-inner">
+          <div class="rcard-face rcard-front">
+            <div class="cap">
+              <div class="nn">Recurso 02</div>
+              <div class="emb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M3 13v-2a9 9 0 0 1 18 0v2"/><path d="M21 15a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2v1Z"/><path d="M3 15a2 2 0 0 0 2 2h1v-5H5a2 2 0 0 0-2 2v1Z"/><path d="M18 17v1a3 3 0 0 1-3 3h-3"/></svg></div>
+              <h3>21 áudios exclusivos</h3>
+            </div>
+            <div class="bd">
+              <p>Um áudio para cada dia da jornada, com exercícios guiados, reflexões e aplicações práticas para acalmar e conduzir o seu dia.</p>
+              <ul class="feat">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Um áudio para cada dia</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Exercícios guiados e reflexões</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Acesso sempre que precisar retornar</li>
+              </ul>
+              <span class="rcard-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M5 9a7 7 0 0 1 12-3l3 3M19 15a7 7 0 0 1-12 3l-3-3"/></svg> Toque para saber mais</span>
+            </div>
+          </div>
+          <div class="rcard-face rcard-back">
+            <div class="bk-tag">Os 21 áudios</div>
+            <h4>Feitos pra ouvir à noite</h4>
+            <p>Ouça deitada, com fones, antes de dormir: os áudios conduzem a sua mente a desacelerar até o sono chegar. Por levarem a um relaxamento profundo, nunca escute enquanto dirige ou faz algo que exija atenção.</p>
+            <span class="rcard-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Voltar</span>
+          </div>
         </div>
-        <div class="bd">
-          <p>Uma companheira que caminha com você: a <b>Claire</b> ajuda a organizar os pensamentos, refletir sobre o que você sente e aplicar os exercícios de cada dia.</p>
-          <ul class="feat">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Disponível 24 horas</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Ajuda a organizar os pensamentos</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Sem julgamento e no seu ritmo</li>
-          </ul>
+      </div>
+      <div class="rcard r3 reveal" tabindex="0" role="button" aria-label="Toque para saber mais sobre a Claire">
+        <div class="rcard-inner">
+          <div class="rcard-face rcard-front">
+            <div class="cap">
+              <div class="nn">Recurso 03</div>
+              <div class="emb"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 3c4.5 0 8 3 8 6.7 0 3.7-3.5 6.6-8 6.6-.9 0-1.8-.1-2.6-.3L5 18l1-3.2C4.2 13.6 4 11.8 4 9.7 4 6 7.5 3 12 3Z"/><path d="M9 9h6M9 12h4"/></svg></div>
+              <h3>Claire · sua IA de escrita</h3>
+            </div>
+            <div class="bd">
+              <p>A <b>Claire</b> é a sua IA de escrita: você coloca em palavras o que sente e ela ajuda a organizar os pensamentos, refletir e aplicar os exercícios de cada dia.</p>
+              <ul class="feat">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Disponível 24 horas</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Ajuda a organizar os pensamentos</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l4.5 4.5L19 7"/></svg> Sem julgamento e no seu ritmo</li>
+              </ul>
+              <span class="rcard-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M5 9a7 7 0 0 1 12-3l3 3M19 15a7 7 0 0 1-12 3l-3-3"/></svg> Toque para saber mais</span>
+            </div>
+          </div>
+          <div class="rcard-face rcard-back">
+            <div class="bk-tag">A Claire</div>
+            <h4>Uma IA de escrita pra te ouvir</h4>
+            <p>Você escreve o que está sentindo, a qualquer hora, e a Claire te ajuda a organizar os pensamentos, enxergar com mais clareza e encontrar o próximo passo possível. Sem julgamento, no seu tempo.</p>
+            <span class="rcard-voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Voltar</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<script>
+(function(){
+  document.querySelectorAll('.recebe .rcard').forEach(function(card){
+    var toggle = function(){ card.classList.toggle('flipped'); };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
 <!-- ============================ ÁUDIOS + IA ============================ -->
 <section class="pad-sm tools">
   <div class="wrap tools-grid">
     <div class="tcard t-aud reveal">
       <p class="eyebrow cream">Os áudios</p>
-      <h3>Aperte o play e deixe a mente desacelerar.</h3>
-      <p>21 <b style="color:#FBF5F1;font-weight:700">áudios guiados</b>, para os diferentes momentos da ansiedade: do pico de tensão à insônia que não passa.</p>
+      <h3>Feitos pra ouvir à noite, antes de dormir.</h3>
+      <p>21 <b style="color:#FBF5F1;font-weight:700">áudios guiados</b> que conduzem a sua mente a desacelerar. A proposta é simples: deitar, colocar os fones e se permitir relaxar profundamente até o sono chegar.</p>
       <div class="alist">
         <div class="arow"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="nm">Para quando o corpo entra em alerta</span><span class="wave"><i style="height:10px"></i><i style="height:18px"></i><i style="height:8px"></i><i style="height:14px"></i></span></div>
         <div class="arow"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="nm">Para a mente que não desliga</span><span class="wave"><i style="height:14px"></i><i style="height:8px"></i><i style="height:16px"></i><i style="height:10px"></i></span></div>
@@ -474,16 +532,17 @@ em.it{ font-style:italic; }
         <div class="arow"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="nm">Para as noites sem sono</span><span class="wave"><i style="height:12px"></i><i style="height:7px"></i><i style="height:13px"></i><i style="height:9px"></i></span></div>
       </div>
       <p class="amore">+ 17 faixas para cada fase da sua jornada</p>
+      <p style="font-size:13px;color:#C8B8C2;line-height:1.6;margin-top:16px;border-top:1px solid rgba(184,154,92,.18);padding-top:16px;">Ouça sempre deitada, num lugar seguro e tranquilo, de preferência com fones. Por levarem a um relaxamento profundo, <b style="color:#E7DBE3;font-weight:700">nunca</b> escute enquanto dirige ou faz qualquer atividade que exija a sua atenção.</p>
     </div>
     <div class="tcard t-ia reveal">
       <div class="claire-head">
         <img class="claire-av" src="assets/claire.png" alt="Claire — sua IA de escrita guiada" loading="lazy">
         <div>
-          <p class="eyebrow">Claire · sua companheira de jornada</p>
+          <p class="eyebrow">Claire · IA de escrita</p>
           <h3>Você não precisa caminhar sozinha.</h3>
         </div>
       </div>
-      <p>A <b>Claire</b> é a companheira de jornada criada pela Bruna. Sabe aquela vontade de desabafar às 3 da manhã, mas sem ter com quem falar? Ela está ali: você escreve o que está sentindo e ela te ajuda a organizar os pensamentos, refletir e aplicar os exercícios de cada dia, no seu ritmo.</p>
+      <p>A <b>Claire</b> é a IA de escrita criada pela Bruna. Sabe aquela vontade de desabafar às 3 da manhã, mas sem ter com quem falar? Ela está ali: você escreve o que está sentindo e ela te ajuda a organizar os pensamentos, refletir e aplicar os exercícios de cada dia, no seu ritmo.</p>
       <div class="iachat">
         <div class="bub me">Claire, não sei explicar direito… é um aperto no peito que não passa e a sensação de que algo ruim vai acontecer.</div>
         <div class="bub ia"><img class="bub-av" src="assets/claire.png" alt="Claire" loading="lazy"><span>Que bom que você trouxe isso pra cá. <em>Esse “algo ruim” tem um formato: é uma imagem, uma frase na sua cabeça, ou mais uma sensação no corpo?</em></span></div>
